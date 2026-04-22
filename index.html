@@ -177,6 +177,14 @@
     .pillar-title { font-size: 16px; font-weight: 700; color: var(--text); letter-spacing: -.2px; margin-bottom: 4px; }
     .pillar-body { font-size: 12.5px; color: var(--text-3); line-height: 1.55; }
 
+    /* Multi-item "Also" box — de-emphasized third card */
+    .pillar-multi { padding: 16px 20px; }
+    .pillar-mini-list { list-style: none; display: flex; flex-direction: column; gap: 9px; margin: 0; padding: 0; }
+    .pillar-mini-list li { font-size: 12.5px; color: var(--text-3); line-height: 1.5; display: flex; align-items: baseline; gap: 10px; }
+    .pillar-mini-list li a { color: var(--text-2); transition: color .15s; }
+    .pillar-mini-list li a:hover { color: var(--navy-lt); }
+    .pmi-label { flex-shrink: 0; min-width: 62px; font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--text-4); }
+
     @keyframes fade-up { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
     @keyframes fade-in  { from { opacity:0; } to { opacity:1; } }
 
@@ -673,11 +681,14 @@
         <div class="pillar-title">HostHelper</div>
         <div class="pillar-body">AI-powered STR management platform · In beta</div>
       </a>
-      <a href="#" class="pillar" onclick="return false;" style="cursor:default">
-        <div class="pillar-label">Writing</div>
-        <div class="pillar-title">The Blood Remembers</div>
-        <div class="pillar-body">Sci-fi trilogy in development · Book I · 20+ chapters</div>
-      </a>
+      <div class="pillar pillar-multi">
+        <div class="pillar-label">Also</div>
+        <ul class="pillar-mini-list">
+          <li><span class="pmi-label">Skills</span><a href="#skills">Next.js · Claude AI · Supabase</a></li>
+          <li><span class="pmi-label">Writing</span>The Blood Remembers — sci-fi trilogy</li>
+          <li><span class="pmi-label">Off-hours</span>Basketball · long-form reading</li>
+        </ul>
+      </div>
     </aside>
   </div>
 
