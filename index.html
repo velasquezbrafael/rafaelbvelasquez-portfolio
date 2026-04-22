@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Lora:ital,wght@1,600;1,700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -295,6 +296,7 @@
     .rec-item:last-child { border-right: none; }
     .rec-item a { color: inherit; transition: color .15s; }
     .rec-item a:hover { color: var(--navy-lt); }
+    .rec-icon { width:14px; height:14px; stroke:var(--text-4); flex-shrink:0; margin-right:7px; vertical-align:middle; position:relative; top:-1px; }
     .rec-sup { font-size: 9.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--text-4); margin-right: 3px; }
 
     /* ── SECTION SHARED ──────────────────────── */
@@ -699,23 +701,23 @@
 <div class="rec-strip" role="complementary" aria-label="Recognition and credentials">
   <div class="rec-strip-inner">
     <div class="rec-item">
-      📰&nbsp;
+      <i data-lucide="newspaper" class="rec-icon"></i>
       <a href="https://www.forbes.com/sites/briannegarrett/2020/05/08/8-under-18-the-young-trailblazers-stepping-up-during-the-pandemic/"
          target="_blank" rel="noopener">
         <span class="rec-sup">Press</span>Forbes · 8 Under 18 · 2020
       </a>
     </div>
     <div class="rec-item">
-      🏦&nbsp;<span><span class="rec-sup">Current</span>Ernst &amp; Young · Financial Crimes</span>
+      <i data-lucide="building-2" class="rec-icon"></i><span><span class="rec-sup">Current</span>Ernst &amp; Young · Financial Crimes</span>
     </div>
     <div class="rec-item">
-      🎓&nbsp;<span><span class="rec-sup">Education</span>Villanova University · B.S. Computer Science</span>
+      <i data-lucide="graduation-cap" class="rec-icon"></i><span><span class="rec-sup">Education</span>Villanova University · B.S. Computer Science</span>
     </div>
     <div class="rec-item">
-      ⭐&nbsp;<span><span class="rec-sup">Academic</span>GPA 3.8 · Dean's List 6×</span>
+      <i data-lucide="award" class="rec-icon"></i><span><span class="rec-sup">Academic</span>GPA 3.8 · Dean's List 6×</span>
     </div>
     <div class="rec-item">
-      📍&nbsp;<span><span class="rec-sup">Based in</span>New York, NY</span>
+      <i data-lucide="map-pin" class="rec-icon"></i><span><span class="rec-sup">Based in</span>New York, NY</span>
     </div>
   </div>
 </div>
@@ -1376,6 +1378,8 @@
     document.getElementById('form-success').style.display = 'block';
     this.reset();
   });
+
+  lucide.createIcons();
 </script>
 
 </body>
