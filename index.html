@@ -434,9 +434,9 @@
     /* ── CONTACT FORM ────────────────────────── */
     .contact-bg { position:relative; overflow:hidden; }
     .contact-bg::before { content:''; position:absolute; bottom:-200px; right:-200px; width:600px; height:600px; background:radial-gradient(circle,var(--navy-glow) 0%,transparent 65%); pointer-events:none; }
-    .contact-grid { display:grid; grid-template-columns:1fr 260px; gap:64px; align-items:start; }
-    .contact-photo-col { position:sticky; top:100px; }
-    .contact-photo { width:260px; height:320px; object-fit:cover; object-position:center top; border-radius:14px; display:block; border:1px solid var(--border); opacity:0; animation:fade-up .8s ease .3s forwards; }
+    .contact-grid { display:grid; grid-template-columns:1fr 280px; gap:64px; align-items:stretch; }
+    .contact-photo-col { display:flex; align-items:center; justify-content:center; }
+    .contact-photo { width:280px; height:340px; object-fit:cover; object-position:center top; border-radius:14px; display:block; border:1px solid var(--border); opacity:0; animation:fade-up .8s ease .3s forwards; }
     .c-heading { font-size:clamp(38px,5.5vw,64px); font-weight:900; letter-spacing:-2px; color:var(--text); line-height:1.0; margin-bottom:16px; }
     .c-sub { font-size:16px; color:var(--text-2); max-width:460px; line-height:1.74; margin-bottom:40px; }
 
