@@ -557,6 +557,19 @@
     .take-col p { font-size:15.5px; color:var(--text-2); line-height:1.82; margin-bottom:20px; }
     .take-col p:last-child { margin-bottom:0; }
     .take-col p strong { color:var(--text); font-weight:600; }
+    .take-attribution {
+      margin-top: 44px; padding-top: 22px;
+      border-top: 1px solid var(--border);
+      font-size: 12.5px; color: var(--text-4);
+      display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    }
+    .take-attribution a {
+      color: var(--text-3);
+      border-bottom: 1px dotted var(--text-4);
+      transition: color .2s, border-color .2s;
+    }
+    .take-attribution a:hover { color: var(--navy-lt); border-color: var(--navy-lt); }
+    .take-attribution svg { color: var(--text-4); flex-shrink: 0; }
 
     /* ── SCROLL REVEAL ───────────────────────── */
     .reveal { opacity:0; transform:translateY(18px); transition:opacity .65s ease,transform .65s ease; }
@@ -584,9 +597,36 @@
       .hero { padding:100px 20px 60px; }
       .hero-name { letter-spacing:-1.5px; }
       .hero-meta { flex-direction:column; gap:4px; align-items:flex-start; }
+      .hero-meta-item { padding:3px 0; }
       .hero-meta-item::after { display:none; }
       .hh-cta { flex-direction:column; align-items:flex-start; }
       .rec-item { padding:14px 18px; }
+      .hh-title { word-break: break-word; }
+      .stat-num { font-size: 28px; }
+      .book-row { padding:22px; }
+      .book-hook, .book-detail { font-size:14px; }
+      .exp-points li { font-size:13.5px; }
+      .contact-form { max-width:100%; }
+      .c-heading { letter-spacing:-1px; }
+      .take-heading { font-size: 26px; line-height:1.18; }
+      .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
+    }
+    @media (max-width:430px) {
+      .nav-inner { padding: 0 20px; }
+      .hero-name { font-size: 52px; line-height: .95; letter-spacing:-1px; }
+      .hero-bio { font-size: 15px; line-height: 1.7; }
+      .forbes-badge { font-size: 11px; padding: 5px 12px 5px 7px; }
+      .pillar { padding: 14px 16px; }
+      .pillar-title { font-size: 15px; }
+      .pmi-label { min-width: 54px; }
+      .hh-title { font-size: 34px; }
+      .c-heading { font-size: 38px; }
+      .mock-kpi-val { font-size: 12px; }
+      .mock-kpi-lbl { font-size: 8px; }
+      .feat-row { gap: 12px; padding: 16px 0; }
+      .c-link { padding: 10px 14px; font-size: 13px; }
+      .calendly-btn { padding: 12px 20px; font-size: 13.5px; width: 100%; justify-content: center; }
+      .form-submit { width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -1029,29 +1069,36 @@
   <div class="container">
     <hr class="section-rule" />
     <div class="section-label reveal">My Take</div>
-    <div class="take-tag reveal" style="transition-delay:.06s">Point of View</div>
+    <div class="take-tag reveal" style="transition-delay:.06s">Services as Software</div>
     <h2 class="take-heading reveal" style="transition-delay:.10s">
-      AI doesn't assist financial crime compliance.<br />
-      <em>It replaces it.</em>
+      AI isn't augmenting services.<br />
+      <em>It's replacing the model.</em>
     </h2>
     <div class="take-grid">
       <div class="take-col reveal" style="transition-delay:.16s">
         <p>
-          The rule-based transaction monitoring systems running at most banks today were designed in the 2000s. They alert on patterns set by analysts years ago, require massive compliance teams to triage false positives, and miss typologies that evolved last quarter. <strong>They are structurally obsolete</strong> — and the institutions running them know it.
+          The professional services industry is built on a single assumption: <strong>the work requires humans to produce it.</strong> Strategy decks, control testing, audit workpapers, legal memos — billed by the hour, priced on headcount, margin-protected by how long it takes.
         </p>
         <p>
-          AI changes the equation. Not by augmenting the existing stack — but by replacing the core logic. Real-time graph traversal across transaction networks. Typology detection that learns as schemes evolve. SAR narratives generated in seconds, not hours. The infrastructure for this exists today.
+          That assumption is breaking. Agentic AI doesn't make consultants faster — it replicates the work at near-zero marginal cost. A compliance testing engagement that staffed six people for two weeks now runs overnight, supervised rather than delivered. The deliverable survives. The model underneath it doesn't.
         </p>
       </div>
       <div class="take-col reveal" style="transition-delay:.24s">
         <p>
-          The institutions that move first will build a compliance advantage that compounds. Faster detection. Lower false positive rates. Smaller headcount per dollar of risk managed. Regulators are watching — and the firms that define the standard early get to shape what "adequate" looks like for everyone else.
+          The services sector has outlasted every cycle before — mainframes, ERP, offshoring, cloud — by reinventing around each one. This wave is different. <strong>The work itself is becoming the software.</strong>
         </p>
         <p>
-          <strong>The ones who wait are accumulating invisible risk.</strong> Not because they're being reckless — but because the threat surface is evolving faster than any static ruleset can track. The question isn't whether AI rewrites financial crime compliance. It's which institutions are building that capability now, and which ones are still writing exceptions.
+          Strategy, Big 4, global IT, CX, legal — the firms rebuilding delivery around AI will ship products, not engagements. The ones treating AI as a productivity tool will compress margins until there's nothing left to protect. I live on both sides of this: advising GSIBs on financial crime at EY, shipping AI-native software on the side. The line between the two isn't blurring. It's gone.
         </p>
       </div>
     </div>
+
+    <p class="take-attribution reveal" style="transition-delay:.32s">
+      Aligned with
+      <a href="https://www.linkedin.com/pulse/services-as-software-we-yet-elmer-velasquez-0v3hf/"
+         target="_blank" rel="noopener">Elmer Velasquez's thinking on Services-as-Software</a>
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+    </p>
   </div>
 </section>
 
