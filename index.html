@@ -739,16 +739,16 @@
       </a>
     </div>
     <div class="rec-item">
+      <svg class="rec-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
+      <span><span class="rec-sup">Current</span>Ernst &amp; Young · Financial Crimes</span>
+    </div>
+    <div class="rec-item">
       <svg class="rec-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
       <span><span class="rec-sup">Education</span>Villanova University · B.S. Computer Science</span>
     </div>
     <div class="rec-item">
       <svg class="rec-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       <span><span class="rec-sup">Academic</span>GPA 3.8 · Dean's List 6×</span>
-    </div>
-    <div class="rec-item">
-      <svg class="rec-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
-      <span><span class="rec-sup">Current</span>Ernst &amp; Young · Financial Crimes</span>
     </div>
     <div class="rec-item">
       <svg class="rec-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -1355,12 +1355,30 @@
   setTimeout(typeLoop, 1400); // delay so hero animations settle first
 
   // ── SCROLL REVEAL
-  const revealObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+  (function () {
+    const els = Array.from(document.querySelectorAll('.reveal'));
+    if (!els.length) return;
+
+    function markIn(el) { el.classList.add('in'); }
+
+    // IntersectionObserver: threshold 0 + no rootMargin so any pixel entering viewport fires
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { markIn(e.target); obs.unobserve(e.target); } });
+    }, { threshold: 0, rootMargin: '0px' });
+    els.forEach(el => obs.observe(el));
+
+    // Scroll fallback — catches anything the observer might miss (e.g. already-visible elements
+    // that fired before layout settled, or browsers with quirky IO implementations)
+    function scanAll() {
+      const cutoff = window.innerHeight + 60;
+      els.forEach(el => {
+        if (!el.classList.contains('in') && el.getBoundingClientRect().top < cutoff) markIn(el);
+      });
+    }
+    window.addEventListener('scroll', scanAll, { passive: true });
+    // Initial pass — reveal anything already above the fold on load
+    scanAll();
+  }());
 
   // ── NAV active state
   const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
