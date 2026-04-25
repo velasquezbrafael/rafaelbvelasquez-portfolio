@@ -14,7 +14,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Lora:ital,wght@1,600;1,700&display=swap" rel="stylesheet" />
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -157,19 +156,28 @@
     }
     .light .hero::before { background-image: radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px); }
 
-    .hero-inner { max-width: 1140px; margin: 0 auto; width: 100%; position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0,1.25fr) minmax(0,1fr); gap: 64px; align-items: center; }
-    .hero-left { min-width: 0; }
-    .hero-aside { display:flex; flex-direction:column; gap:12px; opacity:0; animation:fade-up .7s ease .6s forwards; }
-    .pillar { padding:18px 22px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); transition:border-color .2s,background .2s,transform .2s; }
-    .pillar:hover { border-color:var(--border-hi); background:var(--surface-2); transform:translateX(3px); }
-    .pillar-kicker { font-size:9px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--text-4); margin-bottom:6px; }
-    .pillar-title { font-size:16px; font-weight:700; color:var(--text); margin-bottom:4px; }
-    .pillar-sub { font-size:12.5px; color:var(--text-3); line-height:1.4; }
-    .pillar-multi { padding:16px 20px; }
-    .pillar-mini-list { list-style:none; display:flex; flex-direction:column; gap:9px; }
-    .pmi-row { display:flex; align-items:baseline; gap:10px; }
-    .pmi-label { flex-shrink:0; min-width:62px; font-size:9px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--text-4); }
-    .pmi-val { font-size:12.5px; color:var(--text-3); }
+    .hero-inner { max-width: 1140px; margin: 0 auto; width: 100%; position: relative; z-index: 1; display: flex; align-items: center; gap: 64px; }
+    .hero-left { flex: 1 1 auto; min-width: 0; }
+    .hero-right { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; }
+    .hero-photo-wrap {
+      position: relative; width: 260px;
+    }
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--navy) 0%, transparent 60%);
+      z-index: 0;
+    }
+    .hero-photo {
+      position: relative; z-index: 1;
+      width: 260px; height: 320px;
+      object-fit: cover; object-position: center top;
+      border-radius: 14px;
+      display: block;
+      opacity: 0; animation: fade-up .8s ease .6s forwards;
+    }
 
     @keyframes fade-up { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
     @keyframes fade-in  { from { opacity:0; } to { opacity:1; } }
@@ -296,7 +304,6 @@
     .rec-item:last-child { border-right: none; }
     .rec-item a { color: inherit; transition: color .15s; }
     .rec-item a:hover { color: var(--navy-lt); }
-    .rec-icon { width:14px; height:14px; stroke:var(--text-4); flex-shrink:0; margin-right:7px; vertical-align:middle; position:relative; top:-1px; }
     .rec-sup { font-size: 9.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--text-4); margin-right: 3px; }
 
     /* ── SECTION SHARED ──────────────────────── */
@@ -422,6 +429,38 @@
     .s-tag.hi { background:var(--navy-dim); border-color:rgba(79,132,248,.28); color:var(--navy-lt); font-weight:600; }
 
     /* ── BOOK — red accents ──────────────────── */
+    /* ── CLEARCHAIN ────────────────────────── */
+    .cc-bg { position: relative; overflow: hidden; }
+    .cc-bg::after { content:''; position:absolute; top:-200px; left:-150px; width:600px; height:600px; background:radial-gradient(circle,rgba(0,200,120,0.06) 0%,transparent 65%); pointer-events:none; }
+    .cc-title { font-size: clamp(38px,5.5vw,58px); font-weight: 900; letter-spacing: -1.5px; color: var(--text); line-height: 1.0; margin-bottom: 22px; }
+    .cc-status { display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); margin-bottom:14px; }
+    .cc-status::before { content:''; width:6px; height:6px; border-radius:50%; background:#00C87A; animation:glow-pulse 2.2s ease infinite; }
+    .cc-badge { display:inline-flex; align-items:center; gap:6px; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:3px 9px; border-radius:4px; border:1px solid rgba(0,200,122,.25); color:#00C87A; background:rgba(0,200,122,.07); margin-left:8px; }
+    .cc-links { display:flex; align-items:center; gap:18px; margin-top:8px; flex-wrap:wrap; }
+    .cc-gh { display:inline-flex; align-items:center; gap:7px; font-size:12.5px; font-weight:600; color:var(--text-3); transition:color .2s,gap .2s; }
+    .cc-gh:hover { color:var(--text); gap:11px; }
+    /* ClearChain mockup */
+    .cc-mockup { border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border-hi); box-shadow:0 24px 64px rgba(0,0,0,.45); margin-bottom:24px; font-family:'SF Mono','Fira Code',monospace; }
+    .cc-mock-bar { background:var(--bg-2); border-bottom:1px solid var(--border); padding:9px 12px; display:flex; align-items:center; gap:10px; }
+    .cc-mock-body { padding:14px; background:var(--bg); }
+    .cc-addr-row { display:flex; align-items:center; gap:8px; background:var(--bg-1); border:1px solid var(--border); border-radius:6px; padding:7px 12px; margin-bottom:10px; }
+    .cc-addr-input { font-size:10px; color:var(--text-3); flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .cc-scan-btn { font-size:9px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; background:var(--navy); color:#fff; border:none; border-radius:4px; padding:3px 8px; cursor:pointer; white-space:nowrap; }
+    .cc-score-row { display:grid; grid-template-columns:auto 1fr auto; gap:12px; align-items:center; background:rgba(229,56,59,0.06); border:1px solid rgba(229,56,59,.2); border-radius:8px; padding:10px 12px; margin-bottom:9px; }
+    .cc-score-num { font-size:28px; font-weight:900; color:#E5383B; letter-spacing:-1px; line-height:1; }
+    .cc-score-bar-wrap { display:flex; flex-direction:column; gap:4px; }
+    .cc-score-lbl { font-size:8.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-4); }
+    .cc-score-bar { height:5px; border-radius:3px; background:var(--bg-2); overflow:hidden; }
+    .cc-score-fill { height:100%; border-radius:3px; background:linear-gradient(90deg,#FEBC2E,#E5383B); width:65%; }
+    .cc-score-tag { font-size:9px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#E5383B; border:1px solid rgba(229,56,59,.3); padding:3px 7px; border-radius:4px; background:rgba(229,56,59,.06); white-space:nowrap; }
+    .cc-findings { display:flex; flex-direction:column; gap:5px; }
+    .cc-finding { display:flex; align-items:flex-start; gap:7px; font-size:9.5px; color:var(--text-3); }
+    .cc-finding-dot { width:5px; height:5px; border-radius:50%; flex-shrink:0; margin-top:4px; }
+    .cc-finding-dot.red { background:#E5383B; }
+    .cc-finding-dot.amber { background:#FEBC2E; }
+    .cc-finding-dot.green { background:#00C87A; }
+    .cc-finding strong { color:var(--text-2); font-weight:600; }
+
     .book-section { position:relative; overflow:hidden; }
     .book-section::after { content:''; position:absolute; top:-100px; right:-100px; width:400px; height:400px; background:radial-gradient(circle, var(--crimson-glow) 0%, transparent 70%); pointer-events:none; }
     .book-row { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; padding:32px 36px; border:1px solid rgba(229,56,59,0.18); border-radius:var(--radius-lg); background:var(--crimson-dim); position:relative; overflow:hidden; z-index:1; }
@@ -436,9 +475,6 @@
     /* ── CONTACT FORM ────────────────────────── */
     .contact-bg { position:relative; overflow:hidden; }
     .contact-bg::before { content:''; position:absolute; bottom:-200px; right:-200px; width:600px; height:600px; background:radial-gradient(circle,var(--navy-glow) 0%,transparent 65%); pointer-events:none; }
-    .contact-grid { display:grid; grid-template-columns:1fr 300px; gap:64px; align-items:stretch; }
-    .contact-photo-col { display:flex; align-items:stretch; }
-    .contact-photo { width:100%; height:100%; min-height:480px; object-fit:cover; object-position:center top; border-radius:14px; display:block; border:1px solid var(--border); opacity:0; animation:fade-up .8s ease .3s forwards; }
     .c-heading { font-size:clamp(38px,5.5vw,64px); font-weight:900; letter-spacing:-2px; color:var(--text); line-height:1.0; margin-bottom:16px; }
     .c-sub { font-size:16px; color:var(--text-2); max-width:460px; line-height:1.74; margin-bottom:40px; }
 
@@ -551,10 +587,6 @@
 
     /* ── RESPONSIVE ──────────────────────────── */
     @media (max-width:900px) {
-      .hero-inner { grid-template-columns:1fr; }
-      .hero-aside { order:2; }
-      .contact-grid { grid-template-columns:1fr; }
-      .contact-photo-col { display:none; }
       .about-grid { grid-template-columns:1fr; gap:40px; }
       .take-grid { grid-template-columns:1fr; gap:24px; }
       .hh-content-grid { grid-template-columns:1fr; gap:44px; }
@@ -564,6 +596,7 @@
       .exp-block, .exp-block.compact { grid-template-columns:1fr; gap:8px; }
       .skills-grid { grid-template-columns:1fr; }
       .book-row { grid-template-columns:1fr; gap:20px; padding:24px; }
+      .cc-links { gap:12px; }
       .nav-links { display:none; }
       .hamburger { display:flex; }
       .form-row { grid-template-columns:1fr; }
@@ -571,6 +604,10 @@
     @media (max-width:600px) {
       .section { padding:68px 20px; }
       .hero { padding:100px 20px 60px; }
+      .hero-inner { flex-direction: column-reverse; gap: 32px; }
+      .hero-right { width: 100%; align-items: flex-start; }
+      .hero-photo-wrap { width: 140px; }
+      .hero-photo { width: 140px; height: 172px; }
       .hero-name { letter-spacing:-1.5px; }
       .hero-meta { flex-direction:column; gap:4px; align-items:flex-start; }
       .hero-meta-item::after { display:none; }
@@ -591,6 +628,7 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#hosthelper">HostHelper</a></li>
+      <li><a href="#clearchain">ClearChain</a></li>
       <li><a href="#background">Background</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact" class="nav-cta">Contact</a></li>
@@ -657,35 +695,9 @@
       </div>
     </div>
 
-    <div class="hero-aside">
-      <div class="pillar">
-        <div class="pillar-kicker">Currently</div>
-        <div class="pillar-title">EY Financial Crimes</div>
-        <div class="pillar-sub">Technology Consulting Staff · Crypto compliance at GSIB scale</div>
-      </div>
-
-      <div class="pillar">
-        <div class="pillar-kicker">Building</div>
-        <div class="pillar-title">HostHelper</div>
-        <div class="pillar-sub">AI-powered STR management platform · In beta</div>
-      </div>
-
-      <div class="pillar pillar-multi">
-        <div class="pillar-kicker">Also</div>
-        <ul class="pillar-mini-list">
-          <li class="pmi-row">
-            <span class="pmi-label">Skills</span>
-            <span class="pmi-val">Next.js · Claude AI · Supabase</span>
-          </li>
-          <li class="pmi-row">
-            <span class="pmi-label">Writing</span>
-            <span class="pmi-val">The Blood Remembers — sci-fi trilogy</span>
-          </li>
-          <li class="pmi-row">
-            <span class="pmi-label">Off-Hours</span>
-            <span class="pmi-val">Weightlifting &amp; training · side projects · reading</span>
-          </li>
-        </ul>
+    <div class="hero-right">
+      <div class="hero-photo-wrap">
+        <img src="headshot.jpg" alt="Rafael Velasquez" class="hero-photo" />
       </div>
     </div>
 
@@ -701,23 +713,23 @@
 <div class="rec-strip" role="complementary" aria-label="Recognition and credentials">
   <div class="rec-strip-inner">
     <div class="rec-item">
-      <i data-lucide="newspaper" class="rec-icon"></i>
+      📰&nbsp;
       <a href="https://www.forbes.com/sites/briannegarrett/2020/05/08/8-under-18-the-young-trailblazers-stepping-up-during-the-pandemic/"
          target="_blank" rel="noopener">
         <span class="rec-sup">Press</span>Forbes · 8 Under 18 · 2020
       </a>
     </div>
     <div class="rec-item">
-      <i data-lucide="building-2" class="rec-icon"></i><span><span class="rec-sup">Current</span>Ernst &amp; Young · Financial Crimes</span>
+      🎓&nbsp;<span><span class="rec-sup">Education</span>Villanova University · B.S. Computer Science</span>
     </div>
     <div class="rec-item">
-      <i data-lucide="graduation-cap" class="rec-icon"></i><span><span class="rec-sup">Education</span>Villanova University · B.S. Computer Science</span>
+      ⭐&nbsp;<span><span class="rec-sup">Academic</span>GPA 3.8 · Dean's List 6×</span>
     </div>
     <div class="rec-item">
-      <i data-lucide="award" class="rec-icon"></i><span><span class="rec-sup">Academic</span>GPA 3.8 · Dean's List 6×</span>
+      🏦&nbsp;<span><span class="rec-sup">Current</span>Ernst &amp; Young · Financial Crimes</span>
     </div>
     <div class="rec-item">
-      <i data-lucide="map-pin" class="rec-icon"></i><span><span class="rec-sup">Based in</span>New York, NY</span>
+      📍&nbsp;<span><span class="rec-sup">Based in</span>New York, NY</span>
     </div>
   </div>
 </div>
@@ -913,6 +925,138 @@
             <div>
               <div class="feat-name">Automated Ops</div>
               <div class="feat-body">Checkout checklists, maintenance alerts, guest QR codes, and scheduled automations</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLEARCHAIN -->
+<section id="clearchain" class="section cc-bg">
+  <div class="container">
+    <hr class="section-rule" />
+    <div class="section-label reveal">Project · Open Source</div>
+
+    <div class="hh-content-grid">
+      <div class="reveal" style="transition-delay:.06s">
+        <div class="cc-status">Live · v1.0 <span class="cc-badge">Open Source</span></div>
+        <h2 class="cc-title">ClearChain</h2>
+
+        <div class="cs-block">
+          <span class="cs-label">Problem</span>
+          <p class="cs-text">Enterprise blockchain analytics (Chainalysis, Elliptic, TRM) cost <strong>$50K–$100K/year</strong> and output a risk score with zero actionable guidance. They tell you a wallet scored 87 — they don't explain why it looks like layering, which FATF typology it maps to, or what you'd write in a SAR. Small compliance teams are left doing that work manually.</p>
+        </div>
+
+        <div class="cs-block">
+          <span class="cs-label">What I built</span>
+          <p class="cs-text"><strong>ClearChain closes the last mile</strong> that enterprise tools deliberately skip — the narrative, the typology, and the SAR draft. Risk scores, OFAC/SDN screening, AML typology matching, AI-generated SAR drafts, and a counterfactual simulator for any Ethereum wallet. Free, open source, no API key required.</p>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-item">
+            <div class="stat-num">$0</div>
+            <div class="stat-desc">vs $50–100K/yr tools</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">10s</div>
+            <div class="stat-desc">Full wallet risk analysis</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">MIT</div>
+            <div class="stat-desc">Open source license</div>
+          </div>
+        </div>
+
+        <div class="hh-stack">
+          <span class="hh-tech">Next.js</span>
+          <span class="hh-tech">TypeScript</span>
+          <span class="hh-tech">Claude AI</span>
+          <span class="hh-tech">Alchemy</span>
+          <span class="hh-tech">D3.js</span>
+          <span class="hh-tech">Supabase</span>
+          <span class="hh-tech">Vercel</span>
+        </div>
+
+        <div class="cc-links">
+          <a href="https://clear-chain-peach.vercel.app" target="_blank" rel="noopener" class="hh-link">
+            clear-chain-peach.vercel.app
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <a href="https://github.com/velasquezbrafael-source/ClearChain" target="_blank" rel="noopener" class="cc-gh">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.305 3.492.998.108-.775.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:.16s">
+
+        <!-- Wallet analysis mockup -->
+        <div class="cc-mockup" aria-hidden="true">
+          <div class="cc-mock-bar">
+            <div class="mock-dots"><span></span><span></span><span></span></div>
+            <div class="mock-url">clear-chain-peach.vercel.app</div>
+          </div>
+          <div class="cc-mock-body">
+            <div class="cc-addr-row">
+              <span class="cc-addr-input">0x722122dF12D4e14e13Ac3b6895a86e84145b6967</span>
+              <button class="cc-scan-btn">Analyze</button>
+            </div>
+            <div class="cc-score-row">
+              <div class="cc-score-num">65</div>
+              <div class="cc-score-bar-wrap">
+                <div class="cc-score-lbl">Risk Score</div>
+                <div class="cc-score-bar"><div class="cc-score-fill"></div></div>
+              </div>
+              <div class="cc-score-tag">HIGH</div>
+            </div>
+            <div class="cc-findings">
+              <div class="cc-finding"><span class="cc-finding-dot red"></span><span><strong>Mixer interaction</strong> — Direct Tornado Cash Router (25 pts)</span></div>
+              <div class="cc-finding"><span class="cc-finding-dot red"></span><span><strong>Rapid fund movement</strong> — 4 layering hops ≥80% balance (15 pts)</span></div>
+              <div class="cc-finding"><span class="cc-finding-dot amber"></span><span><strong>Typology</strong> — FATF No. 16 · Layering via DEX arbitrage</span></div>
+              <div class="cc-finding"><span class="cc-finding-dot amber"></span><span><strong>SAR draft</strong> — FinCEN-style, ready to download</span></div>
+              <div class="cc-finding"><span class="cc-finding-dot green"></span><span><strong>OFAC/SDN</strong> — No direct sanctions match</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feat-list">
+          <div class="feat-row">
+            <div class="feat-icon">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <div>
+              <div class="feat-name">Risk Scoring Engine</div>
+              <div class="feat-body">Six weighted signals — OFAC match, mixer interaction, rapid layering, high-risk counterparty, volume anomaly, community flags</div>
+            </div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-icon">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div>
+              <div class="feat-name">AI SAR Draft Generator</div>
+              <div class="feat-body">Claude generates a FinCEN-style Suspicious Activity Report narrative — downloadable, editable, audit-ready</div>
+            </div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-icon">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M20.188 10.934l-1.569-.867A8.05 8.05 0 0018.5 8.25l.174-1.808A1 1 0 0017.68 5.5l-1.744.628A8.05 8.05 0 0014.5 5.5l-.934-1.569A1 1 0 0012 3.5h0a1 1 0 00-.864.5l-.934 1.569a8.05 8.05 0 00-1.436.628L7.022 5.57A1 1 0 006.028 6.57l.174 1.68A8.05 8.05 0 005.5 9.75l-1.569.934A1 1 0 003.5 12h0a1 1 0 00.5.864l1.569.934a8.05 8.05 0 00.628 1.436l-.628 1.744a1 1 0 00.998.995l1.808-.174A8.05 8.05 0 009.75 18.5l.934 1.569A1 1 0 0012 20.5h0a1 1 0 00.864-.5l.934-1.569a8.05 8.05 0 001.436-.628l1.744.628a1 1 0 00.995-.998l-.174-1.808A8.05 8.05 0 0018.5 14.5l1.569-.934A1 1 0 0020.5 12h0a1 1 0 00-.312-.866z"/></svg>
+            </div>
+            <div>
+              <div class="feat-name">Counterfactual Simulator</div>
+              <div class="feat-body">Toggle individual risk signals on/off to model what the score would be under different scenarios — built for compliance analysts</div>
+            </div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-icon">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div>
+              <div class="feat-name">Transaction Graph</div>
+              <div class="feat-body">Force-directed D3 visualization of wallet connections — OFAC-flagged nodes highlighted, layering hops visible</div>
             </div>
           </div>
         </div>
@@ -1127,13 +1271,11 @@
 <section id="contact" class="section section-alt contact-bg">
   <div class="container" style="position:relative;z-index:1">
     <hr class="section-rule" />
-    <div class="contact-grid">
-      <div class="contact-left">
-        <div class="section-label reveal">Contact</div>
-        <h2 class="c-heading reveal" style="transition-delay:.08s">Let's talk.</h2>
-        <p class="c-sub reveal" style="transition-delay:.16s">
-          I work with a small number of teams and institutions each year. If you think there's a fit, let's find out.
-        </p>
+    <div class="section-label reveal">Contact</div>
+    <h2 class="c-heading reveal" style="transition-delay:.08s">Let's talk.</h2>
+    <p class="c-sub reveal" style="transition-delay:.16s">
+      I work with a small number of teams and institutions each year. If you think there's a fit, let's find out.
+    </p>
 
     <!-- Contact form -->
     <form class="contact-form reveal" id="contact-form" style="transition-delay:.22s" novalidate>
@@ -1175,7 +1317,7 @@
         LinkedIn
       </a>
       <!-- UPDATE: verify github username is correct -->
-      <a href="https://github.com/velasquezbrafael-source" target="_blank" rel="noopener" class="c-link">
+      <a href="https://github.com/rafaelvelasquez" target="_blank" rel="noopener" class="c-link">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
         GitHub
       </a>
@@ -1196,14 +1338,8 @@
       -->
     </div>
 
-        <hr class="c-divider reveal" style="transition-delay:.46s" />
-        <p class="c-note reveal" style="transition-delay:.50s">Based in New York, NY &nbsp;·&nbsp; Open to remote or hybrid</p>
-      </div><!-- /.contact-left -->
-
-      <div class="contact-photo-col">
-        <img src="headshot.jpg" alt="Rafael Velasquez" class="contact-photo" />
-      </div>
-    </div><!-- /.contact-grid -->
+    <hr class="c-divider reveal" style="transition-delay:.46s" />
+    <p class="c-note reveal" style="transition-delay:.50s">Based in New York, NY &nbsp;·&nbsp; Open to remote or hybrid</p>
   </div>
 </section>
 
@@ -1218,6 +1354,7 @@
     <div class="qn-items">
       <a href="#about"      class="qn-item" data-key="a"><kbd>A</kbd> About</a>
       <a href="#hosthelper" class="qn-item" data-key="h"><kbd>H</kbd> HostHelper</a>
+      <a href="#clearchain" class="qn-item" data-key="l"><kbd>L</kbd> ClearChain</a>
       <a href="#background" class="qn-item" data-key="b"><kbd>B</kbd> Background</a>
       <a href="#my-take"    class="qn-item" data-key="t"><kbd>T</kbd> My Take</a>
       <a href="#skills"     class="qn-item" data-key="s"><kbd>S</kbd> Skills</a>
@@ -1255,7 +1392,7 @@
 
   // ── KEYBOARD QUICK NAV
   const quickNav = document.getElementById('quick-nav');
-  const keyMap = { a:'#about', h:'#hosthelper', b:'#background', t:'#my-take', s:'#skills', c:'#contact' };
+  const keyMap = { a:'#about', h:'#hosthelper', l:'#clearchain', b:'#background', t:'#my-take', s:'#skills', c:'#contact' };
   function closeQuickNav() { quickNav.classList.remove('open'); quickNav.setAttribute('aria-hidden','true'); }
   function openQuickNav()  { quickNav.classList.add('open');    quickNav.setAttribute('aria-hidden','false'); }
   document.addEventListener('keydown', e => {
@@ -1378,8 +1515,6 @@
     document.getElementById('form-success').style.display = 'block';
     this.reset();
   });
-
-  lucide.createIcons();
 </script>
 
 </body>
