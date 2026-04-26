@@ -157,7 +157,7 @@
 
     .hero-inner { max-width: 1140px; margin: 0 auto; width: 100%; position: relative; z-index: 1; display: flex; align-items: stretch; gap: 64px; align-self: stretch; }
     .hero-left { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
-    .hero-right { flex: 0 0 380px; display: flex; flex-direction: column; }
+    .hero-right { flex: 0 0 380px; display: flex; flex-direction: column; align-self: center; }
 
     @keyframes fade-up { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
     @keyframes fade-in  { from { opacity:0; } to { opacity:1; } }
@@ -410,8 +410,8 @@
 
     /* ── BOOK — red accents ──────────────────── */
     /* ── HERO SUMMARY CARD ──────────────────── */
-    .hero-summary { display:flex; flex-direction:column; gap:0; border:1px solid var(--border-hi); border-radius:var(--radius-lg); background:var(--surface); overflow:hidden; width:100%; flex:1; }
-    .hs-block { padding:24px 28px; border-bottom:1px solid var(--border); flex:1; display:flex; flex-direction:column; justify-content:center; }
+    .hero-summary { display:flex; flex-direction:column; gap:0; border:1px solid var(--border-hi); border-radius:var(--radius-lg); background:var(--surface); overflow:hidden; width:100%; }
+    .hs-block { padding:22px 26px; border-bottom:1px solid var(--border); }
     .hs-block:last-child { border-bottom:none; }
     .hs-label { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--text-4); margin-bottom:12px; }
     .hs-item { display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text-2); line-height:1.5; margin-bottom:7px; }
