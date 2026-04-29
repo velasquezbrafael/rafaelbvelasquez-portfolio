@@ -775,7 +775,7 @@
         <p>
           Based in New York, I work at the intersection of financial crime compliance and emerging technology. At <strong>Ernst &amp; Young</strong>, I support some of the largest financial institutions in the world on AML programs, crypto compliance, and the regulatory technology built around them — translating complex regulatory requirements into systems that actually hold up in practice.
         </p>
-        <p>Outside of EY, I build software. <strong>HostHelper</strong> started as a problem I wanted solved: short-term rental hosts were managing properties across too many disconnected tools, with no intelligence tying them together. I designed the system I wanted to exist and started building it. <strong>ClearChain</strong> came from the same instinct — enterprise AML tools cost $50K+ a year and output a risk score with zero explanation. I built the open-source alternative: risk scores, OFAC screening, typology matching, and AI-generated SAR drafts for any compliance team that needs them.</p>
+        <p>Outside of EY, I build software. <strong>HostHelper</strong> started as a problem I wanted solved: short-term rental hosts were managing properties across too many disconnected tools, with no intelligence tying them together. I designed the system I wanted to exist and started building it. <strong>ClearChain</strong> came from the same instinct — enterprise AML tools cost $50K+ a year and output a risk score with zero explanation. I built the open-source alternative: multi-chain screening (ETH, BTC, Tron, Solana), OFAC checks, 7 typology detections, and AI-generated SAR drafts. JS and Python SDKs published. Launching on ProductHunt May 3rd.</p>
         <p>
           I also write. <em>The Blood Remembers</em> — a science fiction series set 750 years from now. 20+ chapters in.
         </p>
@@ -972,48 +972,53 @@
 
     <div class="hh-content-grid">
       <div class="reveal" style="transition-delay:.06s">
-        <div class="cc-status">Live · v1.0 <span class="cc-badge">Open Source</span></div>
+        <div class="cc-status">Live · Multi-Chain <span class="cc-badge">Open Source</span></div>
         <h2 class="cc-title">ClearChain</h2>
 
         <div class="cs-block">
           <span class="cs-label">Problem</span>
           <p class="cs-text">Enterprise blockchain analytics (Chainalysis, Elliptic, TRM) cost <strong>$50K–$100K/year</strong> and output a risk score with zero actionable guidance. They tell you a wallet scored 87 — they don't explain why it looks like layering, which FATF typology it maps to, or what you'd write in a SAR. Small compliance teams are left doing that work manually.</p>
+
         </div>
 
         <div class="cs-block">
           <span class="cs-label">What I built</span>
-          <p class="cs-text"><strong>ClearChain closes the last mile</strong> that enterprise tools deliberately skip — the narrative, the typology, and the SAR draft. Risk scores, OFAC/SDN screening, AML typology matching, AI-generated SAR drafts, and a counterfactual simulator for any Ethereum wallet. Free, open source, no API key required.</p>
+          <p class="cs-text"><strong>ClearChain closes the last mile</strong> that enterprise tools deliberately skip. Multi-chain screening across Ethereum, Bitcoin, Tron, and Solana — with OFAC/SDN checks, 6-signal risk scoring (0–100), 7 FATF/FinCEN typology detection, AI-generated compliance narratives, and SAR drafts. Ships a JS SDK (<code>npm install clearchain-sdk</code>) and Python SDK (<code>pip install clearchain</code>). Free, open source, no account required.</p>
         </div>
 
         <div class="stat-row">
           <div class="stat-item">
-            <div class="stat-num">$0</div>
-            <div class="stat-desc">vs $50–100K/yr tools</div>
+            <div class="stat-num">4</div>
+            <div class="stat-desc">Chains supported</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">10s</div>
-            <div class="stat-desc">Full wallet risk analysis</div>
+            <div class="stat-num">7</div>
+            <div class="stat-desc">FATF/FinCEN typologies</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">MIT</div>
-            <div class="stat-desc">Open source license</div>
+            <div class="stat-num">2</div>
+            <div class="stat-desc">SDKs published</div>
           </div>
         </div>
 
         <div class="hh-stack">
           <span class="hh-tech">Next.js</span>
           <span class="hh-tech">TypeScript</span>
-          <span class="hh-tech">Claude AI</span>
-          <span class="hh-tech">Alchemy</span>
-          <span class="hh-tech">D3.js</span>
           <span class="hh-tech">Supabase</span>
+          <span class="hh-tech">Alchemy</span>
+          <span class="hh-tech">Claude AI</span>
+          <span class="hh-tech">D3.js</span>
           <span class="hh-tech">Vercel</span>
         </div>
 
         <div class="cc-links">
-          <a href="https://clear-chain-peach.vercel.app" target="_blank" rel="noopener" class="hh-link">
-            clear-chain-peach.vercel.app
+          <a href="https://clearchain.vercel.app" target="_blank" rel="noopener" class="hh-link">
+            clearchain.vercel.app
             <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <a href="https://www.producthunt.com" target="_blank" rel="noopener" class="cc-gh">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M13.604 8.4h-3.405V12h3.405c.995 0 1.801-.806 1.801-1.8S14.6 8.4 13.604 8.4z"/><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm1.604 14.4H10.2V18H7.8V6h5.804a4.2 4.2 0 0 1 0 8.4z"/></svg>
+            ProductHunt · May 3rd
           </a>
           <a href="https://github.com/velasquezbrafael-source/ClearChain" target="_blank" rel="noopener" class="cc-gh">
             <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.305 3.492.998.108-.775.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
@@ -1028,7 +1033,7 @@
         <div class="cc-mockup" aria-hidden="true">
           <div class="cc-mock-bar">
             <div class="mock-dots"><span></span><span></span><span></span></div>
-            <div class="mock-url">clear-chain-peach.vercel.app</div>
+            <div class="mock-url">clearchain.vercel.app</div>
           </div>
           <div class="cc-mock-body">
             <div class="cc-addr-row">
